@@ -429,9 +429,298 @@ function draw(context) {
 			context.fill();
 		}
 
+		function Cartman(context, position = 710) {
+			// Штаны
+			context.fillStyle = "rgb(160, 82, 45)";
+			context.beginPath();
+			context.moveTo(position + 60, 480);
+			context.lineTo(position + 60, 500);
+			context.lineTo(position - 10, 500);
+			context.lineTo(position - 10, 480);
+			context.closePath();
+			context.stroke();
+			context.fill();
+			// Торс
+			context.fillStyle = "rgb(178, 34, 34)";
+			context.beginPath();
+			context.ellipse(position + 25, 460, 50, 35, 0, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+
+			context.beginPath();
+			context.moveTo(position + 25, 450);
+			context.lineTo(position + 25, 495);
+			context.stroke();
+			context.fill();
+			// Обувь
+			context.beginPath();
+			context.fillStyle = "black";
+			context.ellipse(position + 5, 500, 24, 3, 0, 0, 2 * Math.PI);
+			context.ellipse(position + 45, 500, 24, 3, 0, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+			// Второй подбородок
+			context.beginPath();
+			context.fillStyle = "rgb(255, 239, 213)";
+			context.ellipse(position + 25, 428, 40, 30, 0, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+			// Голова
+			context.beginPath();
+			context.fillStyle = "rgb(255, 239, 213)";
+			context.ellipse(position + 25, 425, 40, 30, 0, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+			// Глаза
+			context.beginPath();
+			context.fillStyle = "white";
+			context.ellipse(position + 15, 425, 12, 10, -Math.PI / 3, 0, 2 * Math.PI);
+			context.ellipse(position + 35, 425, 12, 10, Math.PI / 3, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+
+			context.fillStyle = "black";
+
+			context.beginPath();
+			context.arc(position + 30, 425, 1, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+
+			context.beginPath();
+			context.arc(position + 20, 425, 1, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+			// Рот
+			context.beginPath();
+			context.arc(position + 25, 445, 5, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+			// Шапка
+			context.fillStyle = "rgb(135, 206, 250)";
+			context.beginPath();
+			context.ellipse(position + 25, 415, 38, 30, 0, -Math.PI, 0);
+			context.closePath();
+			context.stroke();
+			context.fill();
+
+			context.fillStyle = "yellow";
+			context.beginPath();
+			context.moveTo(position - 14, 410);
+			context.lineTo(position + 64, 410);
+			context.lineTo(position + 64, 415);
+			context.lineTo(position - 14, 415);
+			context.closePath();
+			context.stroke();
+			context.fill();
+
+			context.beginPath();
+			context.fillStyle = "yellow";
+			context.ellipse(position + 25, 385, 13, 6, 0, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+			// Брови
+			context.beginPath();
+			context.moveTo(position + 5, 415);
+			context.lineTo(position + 20, 405);
+			context.closePath();
+			context.stroke();
+			context.fill();
+
+			context.beginPath();
+			context.moveTo(position + 45, 415);
+			context.lineTo(position + 30, 405);
+			context.closePath();
+			context.stroke();
+			context.fill();
+			// Перчатки
+			context.fillStyle = "yellow";
+
+			context.beginPath();
+			context.ellipse(position - 16, 460, 12, 8, Math.PI / 6, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+
+			context.beginPath();
+			context.ellipse(position + 67, 460, 12, 8, -Math.PI / 6, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+		}
+
+		function Kenny(context, position = 820) {
+			// Руки
+			context.fillStyle = "rgb(255, 140, 0)";
+
+			context.beginPath();
+			context.ellipse(position - 5, 465, 16, 6, -Math.PI / 2.6, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+
+			context.beginPath();
+			context.ellipse(position + 55, 465, 16, 6, Math.PI / 2.6, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+			// Перчатки
+			context.fillStyle = "rgb(160, 82, 45)";
+
+			context.beginPath();
+			context.arc(position + 60, 475, 7, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+
+			context.beginPath();
+			context.arc(position + 55, 475, 3, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+
+			context.beginPath();
+			context.arc(position - 10, 475, 7, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+
+			context.beginPath();
+			context.arc(position - 5, 475, 3, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+			// Торс
+			context.fillStyle = "rgb(255, 140, 0)";
+			context.beginPath();
+			context.moveTo(position, 450);
+			context.lineTo(position + 50, 450);
+			context.lineTo(position + 50, 490);
+			context.lineTo(position, 490);
+			context.lineTo(position, 450);
+			context.closePath();
+			context.stroke();
+			context.fill();
+
+			context.beginPath();
+			context.moveTo(position + 25, 450);
+			context.lineTo(position + 25, 490);
+			context.stroke();
+			context.fill();
+			// Штаны
+			context.fillStyle = "rgb(255, 140, 0)";
+			context.beginPath();
+			context.moveTo(position + 50, 490);
+			context.lineTo(position + 50, 500);
+			context.lineTo(position, 500);
+			context.lineTo(position, 490);
+			context.closePath();
+			context.stroke();
+			context.fill();
+			// Обувь
+			context.beginPath();
+			context.fillStyle = "black";
+			context.ellipse(position + 10, 500, 20, 2, 0, 0, 2 * Math.PI);
+			context.ellipse(position + 40, 500, 20, 2, 0, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+			// Рот
+			context.beginPath();
+			context.arc(position + 25, 445, 5, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+			// Капюшон
+			context.fillStyle = "rgb(255, 140, 0)";
+			context.beginPath();
+			context.arc(position + 25, 425, 40, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+			// Лицо
+			context.fillStyle = "rgb(255, 239, 213)";
+			context.beginPath();
+			context.ellipse(position + 25, 425, 23, 25, Math.PI / 2, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+			// Глаза
+			context.beginPath();
+			context.fillStyle = "white";
+			context.ellipse(position + 15, 425, 12, 10, -Math.PI / 3, 0, 2 * Math.PI);
+			context.ellipse(position + 35, 425, 12, 10, Math.PI / 3, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+
+			context.fillStyle = "black";
+
+			context.beginPath();
+			context.arc(position + 30, 425, 1, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+
+			context.beginPath();
+			context.arc(position + 20, 425, 1, 0, 2 * Math.PI);
+			context.closePath();
+			context.stroke();
+			context.fill();
+			// Капюшон
+			context.beginPath();
+			context.fillStyle = "rgb(160, 82, 45)";
+			context.moveTo(position + 25, 450);
+			context.lineTo(position - 5, 435);
+			context.lineTo(position - 5, 415);
+			context.lineTo(position + 25, 400);
+			context.lineTo(position + 5, 415);
+			context.lineTo(position + 5, 435);
+			context.moveTo(position + 25, 450);
+			context.lineTo(position + 55, 435);
+			context.lineTo(position + 55, 415);
+			context.lineTo(position + 25, 400);
+			context.lineTo(position + 45, 415);
+			context.lineTo(position + 45, 435);
+			context.closePath();
+			context.stroke();
+			context.fill();
+
+			context.beginPath();
+			context.moveTo(position + 25, 450);
+			context.lineTo(position + 20, 460);
+			context.moveTo(position + 25, 450);
+			context.lineTo(position + 30, 460);
+			context.stroke();
+			// Брови
+			context.beginPath();
+			context.moveTo(position + 5, 415);
+			context.lineTo(position + 20, 405);
+			context.closePath();
+			context.stroke();
+			context.fill();
+
+			context.beginPath();
+			context.moveTo(position + 45, 415);
+			context.lineTo(position + 30, 405);
+			context.closePath();
+			context.stroke();
+			context.fill();
+		}
+
 		if (step < 150) {
 			Kyle(context);
 			Stan(context);
+			Cartman(context);
+			Kenny(context);
 		}
 	}
 
@@ -450,13 +739,16 @@ roll.addEventListener("click", () => {
 		context.fillStyle = "rgb(255,255,255)";
 		context.strokeStyle = "rgb(0,0,0)";
 		context.beginPath();
-		context.arc(60 + 4 * step, 260 + step, 20 + 1.5 * step, 0, 2 * Math.PI);
+		context.arc(40 + 4 * step, 260 + step, 20 + 1.5 * step, 0, 2 * Math.PI);
 		context.closePath();
 		context.stroke();
 		context.fill();
 	}
 
-	step += 10;
 	draw(context);
 	snowball(context);
+
+	step += 10;
+
+	if (step > 80) roll.style.backgroundColor = "red";
 });
