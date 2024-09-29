@@ -1,4 +1,4 @@
-let step = 0;
+let step = 10;
 
 function draw(context) {
 	function sky(context) {
@@ -732,6 +732,15 @@ let roll = document.querySelector("#roll");
 context = document.querySelector("#drawing").getContext("2d");
 
 draw(context);
+
+context.fillStyle = "rgb(255,255,255)";
+context.strokeStyle = "rgb(0,0,0)";
+context.beginPath();
+context.arc(40 + 4 * step, 260 + step, 20 + 1.5 * step, 0, 2 * Math.PI);
+context.closePath();
+context.stroke();
+context.fill();
+
 roll.addEventListener("click", () => {
 	function snowball(context) {
 		context.fillStyle = "rgb(255,255,255)";
@@ -743,11 +752,12 @@ roll.addEventListener("click", () => {
 		context.fill();
 	}
 
+	step += step * 0.5;
+
 	draw(context);
 	snowball(context);
 
-	step += 25;
-	if (step > 375) {
+	if (step > 300) {
 		roll.innerHTML = "Congrats! You've killed Kenny!";
 		roll.style.backgroundColor = "gold";
 		roll.disabled = true;
