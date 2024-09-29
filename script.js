@@ -73,28 +73,6 @@ function draw(context) {
 	hill(context);
 }
 
-// function move(points, dx, dy) {
-// 	for (let i = 0; i < points.length; i++) {
-// 		points[i].x += dx;
-// 		points[i].y += dy;
-// 	}
-// }
-
-// function scale(points, sx, sy) {
-// 	for (let i = 0; i < points.length; i++) {
-// 		points[i].x *= sx;
-// 		points[i].y *= sy;
-// 	}
-// }
-
-// function rotate(points, x, y, angle) {
-// 	for (let i = 0; i < points.length; i++) {
-// 		let newX = points[i].x * Math.sin(angle) + points[i].y * Math.cos(angle);
-// 		points[i].y = points[i].x * Math.cos(angle) - points[i].y * Math.sin(angle);
-// 		points[i].x = newX;
-// 	}
-// }
-
 let roll = document.querySelector("#roll");
 context = document.querySelector("#drawing").getContext("2d");
 
