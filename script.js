@@ -106,7 +106,7 @@ function draw(context) {
 	function children(context) {
 		function Kyle(context, position = 500) {
 			// Руки
-			context.fillStyle = "orange";
+			context.fillStyle = "rgb(255, 140, 0)";
 
 			context.beginPath();
 			context.ellipse(position - 5, 465, 16, 6, -Math.PI / 2.6, 0, 2 * Math.PI);
@@ -146,7 +146,7 @@ function draw(context) {
 			context.stroke();
 			context.fill();
 			// Торс
-			context.fillStyle = "orange";
+			context.fillStyle = "rgb(255, 140, 0)";
 			context.beginPath();
 			context.moveTo(position, 450);
 			context.lineTo(position + 50, 450);
@@ -716,12 +716,10 @@ function draw(context) {
 			context.fill();
 		}
 
-		if (step < 150) {
-			Kyle(context);
-			Stan(context);
-			Cartman(context);
-			Kenny(context);
-		}
+		Kyle(context);
+		Stan(context);
+		Cartman(context);
+		if (step < 150) Kenny(context);
 	}
 
 	sky(context);
@@ -748,7 +746,10 @@ roll.addEventListener("click", () => {
 	draw(context);
 	snowball(context);
 
-	step += 10;
-
-	if (step > 80) roll.style.backgroundColor = "red";
+	step += 25;
+	if (step > 375) {
+		roll.innerHTML = "Congrats! You've killed Kenny!";
+		roll.style.backgroundColor = "gold";
+		roll.disabled = true;
+	}
 });
