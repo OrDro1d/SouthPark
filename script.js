@@ -103,6 +103,16 @@ function draw(context) {
 		context.fill();
 	}
 
+	function snowball(context) {
+		context.fillStyle = "rgb(255,255,255)";
+		context.strokeStyle = "rgb(0,0,0)";
+		context.beginPath();
+		context.arc(40 + 4 * step, 260 + step, 20 + 1.5 * step, 0, 2 * Math.PI);
+		context.closePath();
+		context.stroke();
+		context.fill();
+	}
+
 	function children(context) {
 		function Kyle(context, position = 500) {
 			// Руки
@@ -716,15 +726,16 @@ function draw(context) {
 			context.fill();
 		}
 
-		Kyle(context);
-		Stan(context);
-		Cartman(context);
-		if (step < 150) Kenny(context);
+		Kyle(context, 200);
+		Stan(context, 300);
+		Cartman(context, 410);
+		if (step < 150) Kenny(context, 520);
 	}
 
 	sky(context);
 	background(context);
 	hill(context);
+	snowball(context);
 	children(context);
 }
 
@@ -733,29 +744,10 @@ context = document.querySelector("#drawing").getContext("2d");
 
 draw(context);
 
-context.fillStyle = "rgb(255,255,255)";
-context.strokeStyle = "rgb(0,0,0)";
-context.beginPath();
-context.arc(40 + 4 * step, 260 + step, 20 + 1.5 * step, 0, 2 * Math.PI);
-context.closePath();
-context.stroke();
-context.fill();
-
 roll.addEventListener("click", () => {
-	function snowball(context) {
-		context.fillStyle = "rgb(255,255,255)";
-		context.strokeStyle = "rgb(0,0,0)";
-		context.beginPath();
-		context.arc(40 + 4 * step, 260 + step, 20 + 1.5 * step, 0, 2 * Math.PI);
-		context.closePath();
-		context.stroke();
-		context.fill();
-	}
-
 	step += step * 0.5;
 
 	draw(context);
-	snowball(context);
 
 	if (step > 300) {
 		roll.innerHTML = "Congrats! You've killed Kenny!";
