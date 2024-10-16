@@ -1,6 +1,4 @@
-let step = 10;
-
-function draw(context) {
+function draw(context, value = 0) {
 	function sky(context) {
 		context.fillStyle = "rgb(175, 238, 238)";
 		context.beginPath();
@@ -94,26 +92,20 @@ function draw(context) {
 		context.fillStyle = "rgb(255,255,255)";
 		context.strokeStyle = "rgb(0,0,0)";
 		context.beginPath();
-		context.moveTo(0, 200);
-		context.lineTo(350, 380);
-		context.lineTo(700, 500);
+		context.moveTo(0, 400);
+		context.lineTo(250, 370);
+		context.lineTo(420, 400);
+		context.lineTo(600, 380);
+		context.lineTo(800, 420);
+		context.lineTo(950, 400);
+		context.lineTo(950, 500);
 		context.lineTo(0, 500);
 		context.closePath();
 		context.stroke();
 		context.fill();
 	}
 
-	function snowball(context) {
-		context.fillStyle = "rgb(255,255,255)";
-		context.strokeStyle = "rgb(0,0,0)";
-		context.beginPath();
-		context.arc(40 + 4 * step, 260 + step, 20 + 1.5 * step, 0, 2 * Math.PI);
-		context.closePath();
-		context.stroke();
-		context.fill();
-	}
-
-	function children(context) {
+	function children(context, value) {
 		function Kyle(context, position = 500) {
 			// Руки
 			context.fillStyle = "rgb(255, 140, 0)";
@@ -729,29 +721,15 @@ function draw(context) {
 		Kyle(context, 200);
 		Stan(context, 300);
 		Cartman(context, 410);
-		if (step < 150) Kenny(context, 520);
+		Kenny(context, 520);
 	}
 
 	sky(context);
 	background(context);
 	hill(context);
-	snowball(context);
-	children(context);
+	children(context, value);
 }
 
-let roll = document.querySelector("#roll");
 context = document.querySelector("#drawing").getContext("2d");
 
 draw(context);
-
-roll.addEventListener("click", () => {
-	step += step * 0.5;
-
-	draw(context);
-
-	if (step > 300) {
-		roll.innerHTML = "Congrats! You've killed Kenny!";
-		roll.style.backgroundColor = "gold";
-		roll.disabled = true;
-	}
-});
