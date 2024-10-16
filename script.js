@@ -1,4 +1,4 @@
-function draw(context, value = 0) {
+function draw(context) {
 	function sky(context) {
 		context.fillStyle = "rgb(175, 238, 238)";
 		context.beginPath();
@@ -105,19 +105,35 @@ function draw(context, value = 0) {
 		context.fill();
 	}
 
-	function children(context, value) {
-		function Kyle(context, position = 500) {
+	function children(context) {
+		function Kyle(context, positionX, positionY) {
 			// Руки
 			context.fillStyle = "rgb(255, 140, 0)";
 
 			context.beginPath();
-			context.ellipse(position - 5, 465, 16, 6, -Math.PI / 2.6, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX - 5,
+				positionY + 15,
+				16,
+				6,
+				-Math.PI / 2.6,
+				0,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.ellipse(position + 55, 465, 16, 6, Math.PI / 2.6, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX + 55,
+				positionY + 15,
+				16,
+				6,
+				Math.PI / 2.6,
+				0,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
@@ -125,82 +141,114 @@ function draw(context, value = 0) {
 			context.fillStyle = "rgb(50, 205, 50)";
 
 			context.beginPath();
-			context.arc(position + 60, 475, 7, 0, 2 * Math.PI);
+			context.arc(positionX + 60, positionY + 25, 7, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.arc(position + 55, 475, 3, 0, 2 * Math.PI);
+			context.arc(positionX + 55, positionY + 25, 3, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.arc(position - 10, 475, 7, 0, 2 * Math.PI);
+			context.arc(positionX - 10, positionY + 25, 7, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.arc(position - 5, 475, 3, 0, 2 * Math.PI);
+			context.arc(positionX - 5, positionY + 25, 3, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Торс
 			context.fillStyle = "rgb(255, 140, 0)";
 			context.beginPath();
-			context.moveTo(position, 450);
-			context.lineTo(position + 50, 450);
-			context.lineTo(position + 50, 490);
-			context.lineTo(position, 490);
-			context.lineTo(position, 450);
+			context.moveTo(positionX, positionY);
+			context.lineTo(positionX + 50, positionY);
+			context.lineTo(positionX + 50, positionY + 40);
+			context.lineTo(positionX, positionY + 40);
+			context.lineTo(positionX, positionY);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.moveTo(position + 25, 450);
-			context.lineTo(position + 25, 490);
+			context.moveTo(positionX + 25, positionY);
+			context.lineTo(positionX + 25, positionY + 40);
 			context.stroke();
 			context.fill();
 			// Штаны
 			context.fillStyle = "gray";
 			context.beginPath();
-			context.moveTo(position + 50, 490);
-			context.lineTo(position + 50, 500);
-			context.lineTo(position, 500);
-			context.lineTo(position, 490);
+			context.moveTo(positionX + 50, positionY + 40);
+			context.lineTo(positionX + 50, positionY + 50);
+			context.lineTo(positionX, positionY + 50);
+			context.lineTo(positionX, positionY + 40);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Обувь
 			context.beginPath();
 			context.fillStyle = "black";
-			context.ellipse(position + 10, 500, 20, 2, 0, 0, 2 * Math.PI);
-			context.ellipse(position + 40, 500, 20, 2, 0, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX + 10,
+				positionY + 50,
+				20,
+				2,
+				0,
+				Math.PI,
+				2 * Math.PI
+			);
+			context.ellipse(
+				positionX + 40,
+				positionY + 50,
+				20,
+				2,
+				0,
+				Math.PI,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Шарф
 			context.beginPath();
 			context.fillStyle = "rgb(50, 205, 50)";
-			context.arc(position + 23, 438, 28, 0, 2 * Math.PI);
+			context.arc(positionX + 23, positionY - 12, 28, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Голова
 			context.beginPath();
 			context.fillStyle = "rgb(255, 239, 213)";
-			context.arc(position + 25, 425, 35, 0, 2 * Math.PI);
+			context.arc(positionX + 25, positionY - 25, 35, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Глаза
 			context.beginPath();
 			context.fillStyle = "white";
-			context.ellipse(position + 15, 425, 12, 10, -Math.PI / 3, 0, 2 * Math.PI);
-			context.ellipse(position + 35, 425, 12, 10, Math.PI / 3, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX + 15,
+				positionY - 25,
+				12,
+				10,
+				-Math.PI / 3,
+				0,
+				2 * Math.PI
+			);
+			context.ellipse(
+				positionX + 35,
+				positionY - 25,
+				12,
+				10,
+				Math.PI / 3,
+				0,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
@@ -208,19 +256,19 @@ function draw(context, value = 0) {
 			context.fillStyle = "black";
 
 			context.beginPath();
-			context.arc(position + 30, 425, 1, 0, 2 * Math.PI);
+			context.arc(positionX + 30, positionY - 25, 1, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.arc(position + 20, 425, 1, 0, 2 * Math.PI);
+			context.arc(positionX + 20, positionY - 25, 1, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Рот
 			context.beginPath();
-			context.arc(position + 25, 445, 5, 0, 2 * Math.PI);
+			context.arc(positionX + 25, positionY - 5, 5, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
@@ -228,63 +276,95 @@ function draw(context, value = 0) {
 			context.fillStyle = "rgb(50, 205, 50)";
 
 			context.beginPath();
-			context.moveTo(position - 10, 410);
-			context.lineTo(position + 60, 410);
-			context.lineTo(position + 60, 380);
-			context.lineTo(position - 10, 380);
+			context.moveTo(positionX - 10, positionY - 40);
+			context.lineTo(positionX + 60, positionY - 40);
+			context.lineTo(positionX + 60, positionY - 70);
+			context.lineTo(positionX - 10, positionY - 70);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.ellipse(position - 10, 420, 20, 6, -Math.PI / 3, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX - 10,
+				positionY - 30,
+				20,
+				6,
+				-Math.PI / 3,
+				0,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.ellipse(position + 60, 420, 20, 6, Math.PI / 3, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX + 60,
+				positionY - 30,
+				20,
+				6,
+				Math.PI / 3,
+				0,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.fillStyle = "rgb(34, 139, 34)";
 			context.beginPath();
-			context.moveTo(position, 410);
-			context.lineTo(position + 50, 410);
-			context.lineTo(position + 50, 390);
-			context.lineTo(position, 390);
+			context.moveTo(positionX, positionY - 40);
+			context.lineTo(positionX + 50, positionY - 40);
+			context.lineTo(positionX + 50, positionY - 60);
+			context.lineTo(positionX, positionY - 60);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Брови
 			context.beginPath();
-			context.moveTo(position + 5, 415);
-			context.lineTo(position + 20, 405);
+			context.moveTo(positionX + 5, positionY - 35);
+			context.lineTo(positionX + 20, positionY - 45);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.moveTo(position + 45, 415);
-			context.lineTo(position + 30, 405);
+			context.moveTo(positionX + 45, positionY - 35);
+			context.lineTo(positionX + 30, positionY - 45);
 			context.closePath();
 			context.stroke();
 			context.fill();
 		}
 
-		function Stan(context, position = 600) {
+		function Stan(context, positionX, positionY) {
 			// Руки
 			context.fillStyle = "rgb(160, 82, 45)";
 
 			context.beginPath();
-			context.ellipse(position - 5, 465, 16, 6, -Math.PI / 2.6, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX - 5,
+				positionY + 15,
+				16,
+				6,
+				-Math.PI / 2.6,
+				0,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.ellipse(position + 55, 465, 16, 6, Math.PI / 2.6, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX + 55,
+				positionY + 15,
+				16,
+				6,
+				Math.PI / 2.6,
+				0,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
@@ -292,82 +372,114 @@ function draw(context, value = 0) {
 			context.fillStyle = "rgb(178, 34, 34)";
 
 			context.beginPath();
-			context.arc(position + 60, 475, 7, 0, 2 * Math.PI);
+			context.arc(positionX + 60, positionY + 25, 7, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.arc(position + 55, 475, 3, 0, 2 * Math.PI);
+			context.arc(positionX + 55, positionY + 25, 3, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.arc(position - 10, 475, 7, 0, 2 * Math.PI);
+			context.arc(positionX - 10, positionY + 25, 7, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.arc(position - 5, 475, 3, 0, 2 * Math.PI);
+			context.arc(positionX - 5, positionY + 25, 3, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Торс
 			context.fillStyle = "rgb(160, 82, 45)";
 			context.beginPath();
-			context.moveTo(position, 450);
-			context.lineTo(position + 50, 450);
-			context.lineTo(position + 50, 490);
-			context.lineTo(position, 490);
-			context.lineTo(position, 450);
+			context.moveTo(positionX, positionY);
+			context.lineTo(positionX + 50, positionY);
+			context.lineTo(positionX + 50, positionY + 40);
+			context.lineTo(positionX, positionY + 40);
+			context.lineTo(positionX, positionY);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.moveTo(position + 25, 450);
-			context.lineTo(position + 25, 490);
+			context.moveTo(positionX + 25, positionY);
+			context.lineTo(positionX + 25, positionY + 40);
 			context.stroke();
 			context.fill();
 			// Штаны
 			context.fillStyle = "rgb(65, 105, 225)";
 			context.beginPath();
-			context.moveTo(position + 50, 490);
-			context.lineTo(position + 50, 500);
-			context.lineTo(position, 500);
-			context.lineTo(position, 490);
+			context.moveTo(positionX + 50, positionY + 40);
+			context.lineTo(positionX + 50, positionY + 50);
+			context.lineTo(positionX, positionY + 50);
+			context.lineTo(positionX, positionY + 40);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Обувь
 			context.beginPath();
 			context.fillStyle = "black";
-			context.ellipse(position + 10, 500, 20, 2, 0, 0, 2 * Math.PI);
-			context.ellipse(position + 40, 500, 20, 2, 0, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX + 10,
+				positionY + 50,
+				20,
+				2,
+				0,
+				Math.PI,
+				2 * Math.PI
+			);
+			context.ellipse(
+				positionX + 40,
+				positionY + 50,
+				20,
+				2,
+				0,
+				Math.PI,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Шарф
 			context.beginPath();
 			context.fillStyle = "rgb(178, 34, 34)";
-			context.arc(position + 23, 438, 28, 0, 2 * Math.PI);
+			context.arc(positionX + 23, positionY - 12, 28, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Голова
 			context.beginPath();
 			context.fillStyle = "rgb(255, 239, 213)";
-			context.arc(position + 25, 425, 35, 0, 2 * Math.PI);
+			context.arc(positionX + 25, positionY - 25, 35, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Глаза
 			context.beginPath();
 			context.fillStyle = "white";
-			context.ellipse(position + 15, 425, 12, 10, -Math.PI / 3, 0, 2 * Math.PI);
-			context.ellipse(position + 35, 425, 12, 10, Math.PI / 3, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX + 15,
+				positionY - 25,
+				12,
+				10,
+				-Math.PI / 3,
+				0,
+				2 * Math.PI
+			);
+			context.ellipse(
+				positionX + 35,
+				positionY - 25,
+				12,
+				10,
+				Math.PI / 3,
+				0,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
@@ -375,113 +487,169 @@ function draw(context, value = 0) {
 			context.fillStyle = "black";
 
 			context.beginPath();
-			context.arc(position + 30, 425, 1, 0, 2 * Math.PI);
+			context.arc(positionX + 30, positionY - 25, 1, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.arc(position + 20, 425, 1, 0, 2 * Math.PI);
+			context.arc(positionX + 20, positionY - 25, 1, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Рот
 			context.beginPath();
-			context.arc(position + 25, 445, 5, 0, 2 * Math.PI);
+			context.arc(positionX + 25, positionY - 5, 5, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Шапка
 			context.fillStyle = "rgb(65, 105, 225)";
 			context.beginPath();
-			context.ellipse(position + 25, 415, 33, 30, 0, -Math.PI, 0);
+			context.ellipse(positionX + 25, positionY - 35, 33, 30, 0, -Math.PI, 0);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.fillStyle = "rgb(178, 34, 34)";
 			context.beginPath();
-			context.moveTo(position - 11, 410);
-			context.lineTo(position + 61, 410);
-			context.lineTo(position + 61, 415);
-			context.lineTo(position - 11, 415);
+			context.moveTo(positionX - 11, positionY - 40);
+			context.lineTo(positionX + 61, positionY - 40);
+			context.lineTo(positionX + 61, positionY - 35);
+			context.lineTo(positionX - 11, positionY - 35);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
 			context.fillStyle = "rgb(178, 34, 34)";
-			context.arc(position + 25, 385, 8, 0, 2 * Math.PI);
+			context.arc(positionX + 25, positionY - 65, 8, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Брови
 			context.beginPath();
-			context.moveTo(position + 5, 415);
-			context.lineTo(position + 20, 405);
+			context.moveTo(positionX + 5, positionY - 35);
+			context.lineTo(positionX + 20, positionY - 45);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.moveTo(position + 45, 415);
-			context.lineTo(position + 30, 405);
+			context.moveTo(positionX + 45, positionY - 35);
+			context.lineTo(positionX + 30, positionY - 45);
 			context.closePath();
 			context.stroke();
 			context.fill();
 		}
 
-		function Cartman(context, position = 710) {
+		function Cartman(context, positionX, positionY) {
 			// Штаны
 			context.fillStyle = "rgb(160, 82, 45)";
 			context.beginPath();
-			context.moveTo(position + 60, 480);
-			context.lineTo(position + 60, 500);
-			context.lineTo(position - 10, 500);
-			context.lineTo(position - 10, 480);
+			context.moveTo(positionX + 60, positionY + 30);
+			context.lineTo(positionX + 60, positionY + 50);
+			context.lineTo(positionX - 10, positionY + 50);
+			context.lineTo(positionX - 10, positionY + 30);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Торс
 			context.fillStyle = "rgb(178, 34, 34)";
 			context.beginPath();
-			context.ellipse(position + 25, 460, 50, 35, 0, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX + 25,
+				positionY + 10,
+				50,
+				35,
+				0,
+				0,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.moveTo(position + 25, 450);
-			context.lineTo(position + 25, 495);
+			context.moveTo(positionX + 25, positionY);
+			context.lineTo(positionX + 25, positionY + 45);
 			context.stroke();
 			context.fill();
 			// Обувь
 			context.beginPath();
 			context.fillStyle = "black";
-			context.ellipse(position + 5, 500, 24, 3, 0, 0, 2 * Math.PI);
-			context.ellipse(position + 45, 500, 24, 3, 0, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX + 5,
+				positionY + 50,
+				24,
+				3,
+				0,
+				Math.PI,
+				2 * Math.PI
+			);
+			context.ellipse(
+				positionX + 45,
+				positionY + 50,
+				24,
+				3,
+				0,
+				Math.PI,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Второй подбородок
 			context.beginPath();
 			context.fillStyle = "rgb(255, 239, 213)";
-			context.ellipse(position + 25, 428, 40, 30, 0, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX + 25,
+				positionY - 22,
+				40,
+				30,
+				0,
+				0,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Голова
 			context.beginPath();
 			context.fillStyle = "rgb(255, 239, 213)";
-			context.ellipse(position + 25, 425, 40, 30, 0, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX + 25,
+				positionY - 25,
+				40,
+				30,
+				0,
+				0,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Глаза
 			context.beginPath();
 			context.fillStyle = "white";
-			context.ellipse(position + 15, 425, 12, 10, -Math.PI / 3, 0, 2 * Math.PI);
-			context.ellipse(position + 35, 425, 12, 10, Math.PI / 3, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX + 15,
+				positionY - 25,
+				12,
+				10,
+				-Math.PI / 3,
+				0,
+				2 * Math.PI
+			);
+			context.ellipse(
+				positionX + 35,
+				positionY - 25,
+				12,
+				10,
+				Math.PI / 3,
+				0,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
@@ -489,57 +657,57 @@ function draw(context, value = 0) {
 			context.fillStyle = "black";
 
 			context.beginPath();
-			context.arc(position + 30, 425, 1, 0, 2 * Math.PI);
+			context.arc(positionX + 30, positionY - 25, 1, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.arc(position + 20, 425, 1, 0, 2 * Math.PI);
+			context.arc(positionX + 20, positionY - 25, 1, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Рот
 			context.beginPath();
-			context.arc(position + 25, 445, 5, 0, 2 * Math.PI);
+			context.arc(positionX + 25, positionY - 5, 5, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Шапка
 			context.fillStyle = "rgb(135, 206, 250)";
 			context.beginPath();
-			context.ellipse(position + 25, 415, 38, 30, 0, -Math.PI, 0);
+			context.ellipse(positionX + 25, positionY - 35, 38, 30, 0, -Math.PI, 0);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.fillStyle = "yellow";
 			context.beginPath();
-			context.moveTo(position - 14, 410);
-			context.lineTo(position + 64, 410);
-			context.lineTo(position + 64, 415);
-			context.lineTo(position - 14, 415);
+			context.moveTo(positionX - 14, positionY - 40);
+			context.lineTo(positionX + 64, positionY - 40);
+			context.lineTo(positionX + 64, positionY - 35);
+			context.lineTo(positionX - 14, positionY - 35);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
 			context.fillStyle = "yellow";
-			context.ellipse(position + 25, 385, 13, 6, 0, 0, 2 * Math.PI);
+			context.ellipse(positionX + 25, positionY - 65, 13, 6, 0, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Брови
 			context.beginPath();
-			context.moveTo(position + 5, 415);
-			context.lineTo(position + 20, 405);
+			context.moveTo(positionX + 5, positionY - 35);
+			context.lineTo(positionX + 20, positionY - 45);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.moveTo(position + 45, 415);
-			context.lineTo(position + 30, 405);
+			context.moveTo(positionX + 45, positionY - 35);
+			context.lineTo(positionX + 30, positionY - 45);
 			context.closePath();
 			context.stroke();
 			context.fill();
@@ -547,30 +715,62 @@ function draw(context, value = 0) {
 			context.fillStyle = "yellow";
 
 			context.beginPath();
-			context.ellipse(position - 16, 460, 12, 8, Math.PI / 6, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX - 16,
+				positionY + 10,
+				12,
+				8,
+				Math.PI / 6,
+				0,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.ellipse(position + 67, 460, 12, 8, -Math.PI / 6, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX + 67,
+				positionY + 10,
+				12,
+				8,
+				-Math.PI / 6,
+				0,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
 		}
 
-		function Kenny(context, position = 820) {
+		function Kenny(context, positionX, positionY) {
 			// Руки
 			context.fillStyle = "rgb(255, 140, 0)";
 
 			context.beginPath();
-			context.ellipse(position - 5, 465, 16, 6, -Math.PI / 2.6, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX - 5,
+				positionY + 15,
+				16,
+				6,
+				-Math.PI / 2.6,
+				0,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.ellipse(position + 55, 465, 16, 6, Math.PI / 2.6, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX + 55,
+				positionY + 15,
+				16,
+				6,
+				Math.PI / 2.6,
+				0,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
@@ -578,88 +778,128 @@ function draw(context, value = 0) {
 			context.fillStyle = "rgb(160, 82, 45)";
 
 			context.beginPath();
-			context.arc(position + 60, 475, 7, 0, 2 * Math.PI);
+			context.arc(positionX + 60, positionY + 25, 7, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.arc(position + 55, 475, 3, 0, 2 * Math.PI);
+			context.arc(positionX + 55, positionY + 25, 3, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.arc(position - 10, 475, 7, 0, 2 * Math.PI);
+			context.arc(positionX - 10, positionY + 25, 7, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.arc(position - 5, 475, 3, 0, 2 * Math.PI);
+			context.arc(positionX - 5, positionY + 25, 3, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Торс
 			context.fillStyle = "rgb(255, 140, 0)";
 			context.beginPath();
-			context.moveTo(position, 450);
-			context.lineTo(position + 50, 450);
-			context.lineTo(position + 50, 490);
-			context.lineTo(position, 490);
-			context.lineTo(position, 450);
+			context.moveTo(positionX, positionY);
+			context.lineTo(positionX + 50, positionY);
+			context.lineTo(positionX + 50, positionY + 40);
+			context.lineTo(positionX, positionY + 40);
+			context.lineTo(positionX, positionY);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.moveTo(position + 25, 450);
-			context.lineTo(position + 25, 490);
+			context.moveTo(positionX + 25, positionY);
+			context.lineTo(positionX + 25, positionY + 40);
 			context.stroke();
 			context.fill();
 			// Штаны
 			context.fillStyle = "rgb(255, 140, 0)";
 			context.beginPath();
-			context.moveTo(position + 50, 490);
-			context.lineTo(position + 50, 500);
-			context.lineTo(position, 500);
-			context.lineTo(position, 490);
+			context.moveTo(positionX + 50, positionY + 40);
+			context.lineTo(positionX + 50, positionY + 50);
+			context.lineTo(positionX, positionY + 50);
+			context.lineTo(positionX, positionY + 40);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Обувь
 			context.beginPath();
 			context.fillStyle = "black";
-			context.ellipse(position + 10, 500, 20, 2, 0, 0, 2 * Math.PI);
-			context.ellipse(position + 40, 500, 20, 2, 0, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX + 10,
+				positionY + 50,
+				20,
+				2,
+				0,
+				Math.PI,
+				2 * Math.PI
+			);
+			context.ellipse(
+				positionX + 40,
+				positionY + 50,
+				20,
+				2,
+				0,
+				Math.PI,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Рот
 			context.beginPath();
-			context.arc(position + 25, 445, 5, 0, 2 * Math.PI);
+			context.arc(positionX + 25, positionY - 5, 5, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Капюшон
 			context.fillStyle = "rgb(255, 140, 0)";
 			context.beginPath();
-			context.arc(position + 25, 425, 40, 0, 2 * Math.PI);
+			context.arc(positionX + 25, positionY - 25, 40, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Лицо
 			context.fillStyle = "rgb(255, 239, 213)";
 			context.beginPath();
-			context.ellipse(position + 25, 425, 23, 25, Math.PI / 2, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX + 25,
+				positionY - 25,
+				23,
+				25,
+				Math.PI / 2,
+				0,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Глаза
 			context.beginPath();
 			context.fillStyle = "white";
-			context.ellipse(position + 15, 425, 12, 10, -Math.PI / 3, 0, 2 * Math.PI);
-			context.ellipse(position + 35, 425, 12, 10, Math.PI / 3, 0, 2 * Math.PI);
+			context.ellipse(
+				positionX + 15,
+				positionY - 25,
+				12,
+				10,
+				-Math.PI / 3,
+				0,
+				2 * Math.PI
+			);
+			context.ellipse(
+				positionX + 35,
+				positionY - 25,
+				12,
+				10,
+				Math.PI / 3,
+				0,
+				2 * Math.PI
+			);
 			context.closePath();
 			context.stroke();
 			context.fill();
@@ -667,67 +907,67 @@ function draw(context, value = 0) {
 			context.fillStyle = "black";
 
 			context.beginPath();
-			context.arc(position + 30, 425, 1, 0, 2 * Math.PI);
+			context.arc(positionX + 30, positionY - 25, 1, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.arc(position + 20, 425, 1, 0, 2 * Math.PI);
+			context.arc(positionX + 20, positionY - 25, 1, 0, 2 * Math.PI);
 			context.closePath();
 			context.stroke();
 			context.fill();
 			// Капюшон
 			context.beginPath();
 			context.fillStyle = "rgb(160, 82, 45)";
-			context.moveTo(position + 25, 450);
-			context.lineTo(position - 5, 435);
-			context.lineTo(position - 5, 415);
-			context.lineTo(position + 25, 400);
-			context.lineTo(position + 5, 415);
-			context.lineTo(position + 5, 435);
-			context.moveTo(position + 25, 450);
-			context.lineTo(position + 55, 435);
-			context.lineTo(position + 55, 415);
-			context.lineTo(position + 25, 400);
-			context.lineTo(position + 45, 415);
-			context.lineTo(position + 45, 435);
+			context.moveTo(positionX + 25, positionY);
+			context.lineTo(positionX - 5, positionY - 15);
+			context.lineTo(positionX - 5, positionY - 35);
+			context.lineTo(positionX + 25, positionY - 50);
+			context.lineTo(positionX + 5, positionY - 35);
+			context.lineTo(positionX + 5, positionY - 15);
+			context.moveTo(positionX + 25, positionY);
+			context.lineTo(positionX + 55, positionY - 15);
+			context.lineTo(positionX + 55, positionY - 35);
+			context.lineTo(positionX + 25, positionY - 50);
+			context.lineTo(positionX + 45, positionY - 35);
+			context.lineTo(positionX + 45, positionY - 15);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.moveTo(position + 25, 450);
-			context.lineTo(position + 20, 460);
-			context.moveTo(position + 25, 450);
-			context.lineTo(position + 30, 460);
+			context.moveTo(positionX + 25, positionY);
+			context.lineTo(positionX + 20, positionY + 10);
+			context.moveTo(positionX + 25, positionY);
+			context.lineTo(positionX + 30, positionY + 10);
 			context.stroke();
 			// Брови
 			context.beginPath();
-			context.moveTo(position + 5, 415);
-			context.lineTo(position + 20, 405);
+			context.moveTo(positionX + 5, positionY - 35);
+			context.lineTo(positionX + 20, positionY - 45);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.moveTo(position + 45, 415);
-			context.lineTo(position + 30, 405);
+			context.moveTo(positionX + 45, positionY - 35);
+			context.lineTo(positionX + 30, positionY - 45);
 			context.closePath();
 			context.stroke();
 			context.fill();
 		}
 
-		Kyle(context, 200);
-		Stan(context, 300);
-		Cartman(context, 410);
-		Kenny(context, 520);
+		Kyle(context, 300, 400);
+		Stan(context, 400, 400);
+		Cartman(context, 510, 400);
+		Kenny(context, 620, 400);
 	}
 
 	sky(context);
 	background(context);
 	hill(context);
-	children(context, value);
+	children(context);
 }
 
 context = document.querySelector("#drawing").getContext("2d");
