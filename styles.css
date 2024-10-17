@@ -1,9 +1,35 @@
-body {
+html {
 	font-size: 32;
+	font-family: "Courier New", Courier, monospace;
 }
 
 #drawing {
 	display: block;
-	margin: 80px auto;
+	margin: 200px auto 20px auto;
 	border: 1px solid black;
+}
+
+.control-panel {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	border: 1px solid black;
+	width: 950px;
+	height: 200px;
+	margin: auto;
+}
+
+.control-panel a {
+	width: 200px;
+	padding: 20px;
+	height: 60px;
+	border: 1px solid black;
+	font-size: 3em;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+}
+
+.control-panel a:hover {
+	background-color: aliceblue;
 }

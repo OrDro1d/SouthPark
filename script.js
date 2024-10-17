@@ -958,18 +958,105 @@ function draw(context) {
 			context.fill();
 		}
 
-		Kyle(context, 300, 400);
-		Stan(context, 400, 400);
-		Cartman(context, 510, 400);
-		Kenny(context, 620, 400);
+		Kyle(context, 300, 380);
+		Stan(context, 400, 380);
+		Cartman(context, 510, 380);
+		Kenny(context, 620, 380);
+	}
+
+	function bus(context, positionY = 0) {
+		// Автобус (основа)
+		context.strokeStyle = "rgb(0,0,0)";
+
+		context.beginPath();
+		context.fillStyle = "yellow";
+		for (let i = 0; i < bus_properties.base.length; i++) {
+			context.lineTo(
+				bus_properties.base[i].x,
+				bus_properties.base[i].y + positionY
+			);
+		}
+		context.closePath();
+		context.stroke();
+		context.fill();
+		// Колёса автобуса
+		context.fillStyle = "black";
+
+		context.beginPath();
+		context.arc(
+			bus_properties.wheels[0].x,
+			bus_properties.wheels[0].y + positionY,
+			bus_properties.wheels[0].size,
+			0,
+			2 * Math.PI
+		);
+		context.closePath();
+		context.stroke();
+		context.fill();
+
+		context.beginPath();
+		context.arc(
+			bus_properties.wheels[1].x,
+			bus_properties.wheels[1].y + positionY,
+			bus_properties.wheels[0].size,
+			0,
+			2 * Math.PI
+		);
+		context.closePath();
+		context.stroke();
+		context.fill();
+
+		context.fillStyle = "gray";
+
+		context.beginPath();
+		context.arc(
+			bus_properties.wheels[0].x,
+			bus_properties.wheels[0].y + positionY,
+			bus_properties.wheels[0].innerSize,
+			0,
+			2 * Math.PI
+		);
+		context.closePath();
+		context.stroke();
+		context.fill();
+
+		context.beginPath();
+		context.arc(
+			bus_properties.wheels[1].x,
+			bus_properties.wheels[1].y + positionY,
+			bus_properties.wheels[1].innerSize,
+			0,
+			2 * Math.PI
+		);
+		context.closePath();
+		context.stroke();
+		context.fill();
 	}
 
 	sky(context);
 	background(context);
 	hill(context);
 	children(context);
+	bus(context, 40);
 }
 
-context = document.querySelector("#drawing").getContext("2d");
+let bus_properties = {
+	base: [
+		{ x: 0, y: 100 },
+		{ x: 500, y: 100 },
+		{ x: 500, y: 220 },
+		{ x: 700, y: 220 },
+		{ x: 700, y: 400 },
+		{ x: 0, y: 400 }
+	],
+	wheels: [
+		{ x: 100, y: 400, size: 60, innerSize: 35 },
+		{ x: 590, y: 400, size: 60, innerSize: 35 }
+	]
+};
+
+const context = document.querySelector("#drawing").getContext("2d");
+const forwardButton = document.querySelector(".forward");
+const backwardButton = document.querySelector(".backward");
 
 draw(context);
