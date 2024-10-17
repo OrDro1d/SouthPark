@@ -969,10 +969,10 @@ function draw(context) {
 		context.strokeStyle = "rgb(0,0,0)";
 
 		context.beginPath();
-		context.fillStyle = "yellow";
+		context.fillStyle = "rgb(255, 235, 0)";
 		for (let i = 0; i < bus_properties.base.length; i++) {
 			context.lineTo(
-				bus_properties.base[i].x,
+				bus_properties.base[i].x + value,
 				bus_properties.base[i].y + positionY
 			);
 		}
@@ -984,7 +984,7 @@ function draw(context) {
 
 		context.beginPath();
 		context.arc(
-			bus_properties.wheels[0].x,
+			bus_properties.wheels[0].x + value,
 			bus_properties.wheels[0].y + positionY,
 			bus_properties.wheels[0].size,
 			0,
@@ -996,9 +996,9 @@ function draw(context) {
 
 		context.beginPath();
 		context.arc(
-			bus_properties.wheels[1].x,
+			bus_properties.wheels[1].x + value,
 			bus_properties.wheels[1].y + positionY,
-			bus_properties.wheels[0].size,
+			bus_properties.wheels[1].size,
 			0,
 			2 * Math.PI
 		);
@@ -1010,7 +1010,7 @@ function draw(context) {
 
 		context.beginPath();
 		context.arc(
-			bus_properties.wheels[0].x,
+			bus_properties.wheels[0].x + value,
 			bus_properties.wheels[0].y + positionY,
 			bus_properties.wheels[0].innerSize,
 			0,
@@ -1022,7 +1022,7 @@ function draw(context) {
 
 		context.beginPath();
 		context.arc(
-			bus_properties.wheels[1].x,
+			bus_properties.wheels[1].x + value,
 			bus_properties.wheels[1].y + positionY,
 			bus_properties.wheels[1].innerSize,
 			0,
@@ -1031,32 +1031,126 @@ function draw(context) {
 		context.closePath();
 		context.stroke();
 		context.fill();
+		// Окна
+		context.fillStyle = "rgb(175, 238, 238)";
+		for (let i = 0; i < 10; i++) {
+			// верхний ряд окон
+			context.beginPath();
+			context.moveTo(
+				bus_properties.windows[0].x + value + i * 90,
+				bus_properties.windows[0].y
+			);
+			for (let j = 1; j < bus_properties.windows.length; j++) {
+				context.lineTo(
+					bus_properties.windows[j].x + value + i * 90,
+					bus_properties.windows[j].y
+				);
+			}
+			context.closePath();
+			context.fill();
+			context.stroke();
+			// Нижний ряд окон
+			context.beginPath();
+			context.moveTo(
+				bus_properties.windows[0].x + value + i * 90,
+				bus_properties.windows[0].y + 50
+			);
+			for (let j = 1; j < bus_properties.windows.length; j++) {
+				context.lineTo(
+					bus_properties.windows[j].x + value + i * 90,
+					bus_properties.windows[j].y + 50
+				);
+			}
+			context.closePath();
+			context.fill();
+			context.stroke();
+		}
+		// Лобовое стекло
+		context.beginPath();
+		context.moveTo(
+			bus_properties.frontWindow[0].x + value,
+			bus_properties.frontWindow[0].y
+		);
+		for (let i = 1; i < bus_properties.frontWindow.length; i++) {
+			context.lineTo(
+				bus_properties.frontWindow[i].x + value,
+				bus_properties.frontWindow[i].y
+			);
+		}
+		context.closePath();
+		context.fill();
+		context.stroke();
+		// Двери
+		for (let i = 0; i < 2; i++) {
+			context.beginPath();
+			context.moveTo(
+				bus_properties.doors[0].x + value + i * 65,
+				bus_properties.doors[0].y
+			);
+			for (let j = 1; j < bus_properties.doors.length; j++) {
+				context.lineTo(
+					bus_properties.doors[j].x + value + i * 65,
+					bus_properties.doors[j].y
+				);
+			}
+			context.closePath();
+			context.stroke();
+		}
 	}
 
 	sky(context);
 	background(context);
 	hill(context);
-	children(context);
+	if (value < 300) children(context);
 	bus(context, 40);
 }
 
-let bus_properties = {
+const bus_properties = {
 	base: [
-		{ x: 0, y: 100 },
+		{ x: -600, y: 100 },
 		{ x: 500, y: 100 },
-		{ x: 500, y: 220 },
-		{ x: 700, y: 220 },
+		{ x: 500, y: 241 },
+		{ x: 700, y: 241 },
 		{ x: 700, y: 400 },
-		{ x: 0, y: 400 }
+		{ x: -600, y: 400 }
+	],
+	windows: [
+		{ x: -590, y: 190 },
+		{ x: -510, y: 190 },
+		{ x: -510, y: 230 },
+		{ x: -590, y: 230 }
+	],
+	doors: [
+		{ x: 320, y: 190 },
+		{ x: 380, y: 190 },
+		{ x: 380, y: 435 },
+		{ x: 320, y: 435 }
+	],
+	frontWindow: [
+		{ x: 465, y: 190 },
+		{ x: 500, y: 190 },
+		{ x: 500, y: 280 },
+		{ x: 465, y: 280 }
+	],
+	stuff: [
+		{ x: -610, y: 360 },
+		{ x: -610, y: 360 }
 	],
 	wheels: [
-		{ x: 100, y: 400, size: 60, innerSize: 35 },
+		{ x: -400, y: 400, size: 60, innerSize: 35 },
 		{ x: 590, y: 400, size: 60, innerSize: 35 }
 	]
 };
 
+let value = -800;
+
 const context = document.querySelector("#drawing").getContext("2d");
-const forwardButton = document.querySelector(".forward");
-const backwardButton = document.querySelector(".backward");
+const moveButton = document.querySelector("#move-button");
 
 draw(context);
+
+moveButton.addEventListener("input", event => {
+	value = Number(moveButton.value);
+	console.log(value);
+	draw(context);
+});

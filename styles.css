@@ -10,8 +10,6 @@ html {
 }
 
 .control-panel {
-	display: flex;
-	justify-content: space-evenly;
 	align-items: center;
 	border: 1px solid black;
 	width: 950px;
@@ -19,17 +17,13 @@ html {
 	margin: auto;
 }
 
-.control-panel a {
-	width: 200px;
+.control-panel div {
+	width: 400px;
 	padding: 20px;
 	height: 60px;
 	border: 1px solid black;
 	font-size: 3em;
 	text-align: center;
-	text-decoration: none;
 	color: black;
-}
-
-.control-panel a:hover {
-	background-color: aliceblue;
+	margin: 45px auto;
 }

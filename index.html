@@ -9,8 +9,10 @@
 	<body>
 		<canvas id="drawing" width="950" height="500"></canvas>
 		<div class="control-panel">
-			<a href="#" class="forward">Вперёд!</a>
-			<a href="#" class="backward">Назад!</a>
+			<div>
+				<input type="range" id="move-button" value="-800" min="-800" max="2000"></input>
+				<label for="move-button">MOVE!</label>
+			</div>
 		</div>
 	</body>
 	<script src="script.js"></script>
