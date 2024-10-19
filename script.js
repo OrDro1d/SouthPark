@@ -268,7 +268,8 @@ function draw(context) {
 			context.fill();
 			// Рот
 			context.beginPath();
-			context.arc(positionX + 25, positionY - 5, 5, 0, 2 * Math.PI);
+			context.moveTo(positionX + 20, positionY - 5);
+			context.lineTo(positionX + 30, positionY - 5);
 			context.closePath();
 			context.stroke();
 			context.fill();
@@ -323,15 +324,15 @@ function draw(context) {
 			context.fill();
 			// Брови
 			context.beginPath();
-			context.moveTo(positionX + 5, positionY - 35);
-			context.lineTo(positionX + 20, positionY - 45);
+			context.moveTo(positionX + 5, positionY - 40);
+			context.lineTo(positionX + 20, positionY - 35);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.moveTo(positionX + 45, positionY - 35);
-			context.lineTo(positionX + 30, positionY - 45);
+			context.moveTo(positionX + 45, positionY - 40);
+			context.lineTo(positionX + 30, positionY - 35);
 			context.closePath();
 			context.stroke();
 			context.fill();
@@ -499,7 +500,8 @@ function draw(context) {
 			context.fill();
 			// Рот
 			context.beginPath();
-			context.arc(positionX + 25, positionY - 5, 5, 0, 2 * Math.PI);
+			context.moveTo(positionX + 20, positionY - 5);
+			context.lineTo(positionX + 30, positionY - 5);
 			context.closePath();
 			context.stroke();
 			context.fill();
@@ -529,15 +531,15 @@ function draw(context) {
 			context.fill();
 			// Брови
 			context.beginPath();
-			context.moveTo(positionX + 5, positionY - 35);
-			context.lineTo(positionX + 20, positionY - 45);
+			context.moveTo(positionX + 5, positionY - 40);
+			context.lineTo(positionX + 20, positionY - 35);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.moveTo(positionX + 45, positionY - 35);
-			context.lineTo(positionX + 30, positionY - 45);
+			context.moveTo(positionX + 45, positionY - 40);
+			context.lineTo(positionX + 30, positionY - 35);
 			context.closePath();
 			context.stroke();
 			context.fill();
@@ -669,7 +671,8 @@ function draw(context) {
 			context.fill();
 			// Рот
 			context.beginPath();
-			context.arc(positionX + 25, positionY - 5, 5, 0, 2 * Math.PI);
+			context.moveTo(positionX + 20, positionY - 5);
+			context.lineTo(positionX + 30, positionY - 5);
 			context.closePath();
 			context.stroke();
 			context.fill();
@@ -699,15 +702,15 @@ function draw(context) {
 			context.fill();
 			// Брови
 			context.beginPath();
-			context.moveTo(positionX + 5, positionY - 35);
-			context.lineTo(positionX + 20, positionY - 45);
+			context.moveTo(positionX + 5, positionY - 40);
+			context.lineTo(positionX + 20, positionY - 35);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.moveTo(positionX + 45, positionY - 35);
-			context.lineTo(positionX + 30, positionY - 45);
+			context.moveTo(positionX + 45, positionY - 40);
+			context.lineTo(positionX + 30, positionY - 35);
 			context.closePath();
 			context.stroke();
 			context.fill();
@@ -944,15 +947,15 @@ function draw(context) {
 			context.stroke();
 			// Брови
 			context.beginPath();
-			context.moveTo(positionX + 5, positionY - 35);
-			context.lineTo(positionX + 20, positionY - 45);
+			context.moveTo(positionX + 5, positionY - 40);
+			context.lineTo(positionX + 20, positionY - 35);
 			context.closePath();
 			context.stroke();
 			context.fill();
 
 			context.beginPath();
-			context.moveTo(positionX + 45, positionY - 35);
-			context.lineTo(positionX + 30, positionY - 45);
+			context.moveTo(positionX + 45, positionY - 40);
+			context.lineTo(positionX + 30, positionY - 35);
 			context.closePath();
 			context.stroke();
 			context.fill();
@@ -966,7 +969,7 @@ function draw(context) {
 
 	function bus(context, positionY = 0) {
 		// Автобус (основа)
-		context.strokeStyle = "rgb(0,0,0)";
+		context.strokeStyle = "black";
 
 		context.beginPath();
 		context.fillStyle = "rgb(255, 235, 0)";
@@ -980,57 +983,70 @@ function draw(context) {
 		context.stroke();
 		context.fill();
 		// Колёса автобуса
-		context.fillStyle = "black";
+		for (let i = 0; i < 2; i++) {
+			context.beginPath();
+			context.fillStyle = "black";
+			context.arc(
+				bus_properties.wheel.x + value + i * 1000,
+				bus_properties.wheel.y + positionY,
+				bus_properties.wheel.size,
+				0,
+				2 * Math.PI
+			);
+			context.closePath();
+			context.fill();
 
-		context.beginPath();
-		context.arc(
-			bus_properties.wheels[0].x + value,
-			bus_properties.wheels[0].y + positionY,
-			bus_properties.wheels[0].size,
-			0,
-			2 * Math.PI
-		);
-		context.closePath();
-		context.stroke();
-		context.fill();
+			let temp =
+				bus_properties.wheelDetail.x * Math.cos(angle) -
+				bus_properties.wheelDetail.y * Math.sin(angle);
+			bus_properties.wheelDetail.y =
+				bus_properties.wheelDetail.x * Math.sin(angle) +
+				bus_properties.wheelDetail.y * Math.cos(angle);
+			bus_properties.wheelDetail.x = temp;
 
-		context.beginPath();
-		context.arc(
-			bus_properties.wheels[1].x + value,
-			bus_properties.wheels[1].y + positionY,
-			bus_properties.wheels[1].size,
-			0,
-			2 * Math.PI
-		);
-		context.closePath();
-		context.stroke();
-		context.fill();
+			context.beginPath();
+			context.strokeStyle = "gray";
+			context.moveTo(
+				bus_properties.wheel.x -
+					bus_properties.wheelDetail.x +
+					value +
+					i * 1000,
+				bus_properties.wheel.y - bus_properties.wheelDetail.y + positionY
+			);
+			context.lineTo(
+				bus_properties.wheel.x +
+					bus_properties.wheelDetail.x +
+					value +
+					i * 1000,
+				bus_properties.wheel.y + bus_properties.wheelDetail.y + positionY
+			);
+			context.closePath();
+			context.stroke();
 
-		context.fillStyle = "gray";
+			context.beginPath();
+			context.fillStyle = "gray";
+			context.arc(
+				bus_properties.wheel.x + value + i * 1000,
+				bus_properties.wheel.y + positionY,
+				bus_properties.wheel.innerSize,
+				0,
+				2 * Math.PI
+			);
+			context.closePath();
+			context.fill();
 
-		context.beginPath();
-		context.arc(
-			bus_properties.wheels[0].x + value,
-			bus_properties.wheels[0].y + positionY,
-			bus_properties.wheels[0].innerSize,
-			0,
-			2 * Math.PI
-		);
-		context.closePath();
-		context.stroke();
-		context.fill();
-
-		context.beginPath();
-		context.arc(
-			bus_properties.wheels[1].x + value,
-			bus_properties.wheels[1].y + positionY,
-			bus_properties.wheels[1].innerSize,
-			0,
-			2 * Math.PI
-		);
-		context.closePath();
-		context.stroke();
-		context.fill();
+			context.beginPath();
+			context.strokeStyle = "black";
+			context.arc(
+				bus_properties.wheel.x + value + i * 1000,
+				bus_properties.wheel.y + positionY,
+				bus_properties.wheel.innerSize - 7,
+				0,
+				2 * Math.PI
+			);
+			context.closePath();
+			context.stroke();
+		}
 		// Окна
 		context.fillStyle = "rgb(175, 238, 238)";
 		for (let i = 0; i < 10; i++) {
@@ -1095,7 +1111,68 @@ function draw(context) {
 			}
 			context.closePath();
 			context.stroke();
+
+			context.beginPath();
+			context.fillStyle = "rgb(175, 238, 238)";
+			context.moveTo(
+				bus_properties.doors[0].x + 10 + value + i * 65,
+				bus_properties.doors[0].y + 10
+			);
+			context.lineTo(
+				bus_properties.doors[1].x - 10 + value + i * 65,
+				bus_properties.doors[1].y + 10
+			);
+			context.lineTo(
+				bus_properties.doors[2].x - 10 + value + i * 65,
+				bus_properties.doors[2].y - 145
+			);
+			context.lineTo(
+				bus_properties.doors[3].x + 10 + value + i * 65,
+				bus_properties.doors[3].y - 145
+			);
+			context.closePath();
+			context.fill();
+			context.stroke();
+
+			context.beginPath();
+			context.fillStyle = "gray";
+			context.moveTo(
+				bus_properties.doors[0].x + 10 + value + i * 65,
+				bus_properties.doors[0].y + 110
+			);
+			context.lineTo(
+				bus_properties.doors[1].x - 10 + value + i * 65,
+				bus_properties.doors[1].y + 110
+			);
+			context.lineTo(
+				bus_properties.doors[2].x - 10 + value + i * 65,
+				bus_properties.doors[2].y - 10
+			);
+			context.lineTo(
+				bus_properties.doors[3].x + 10 + value + i * 65,
+				bus_properties.doors[3].y - 10
+			);
+			context.closePath();
+			context.fill();
+			context.stroke();
 		}
+		// Детали
+		context.fillStyle = "black";
+
+		context.beginPath();
+		context.moveTo(-600 + value, 150 + positionY);
+		context.lineTo(500 + value, 150 + positionY);
+		context.closePath();
+		context.stroke();
+
+		context.beginPath();
+		context.moveTo(-600 + value, 260 + positionY);
+		context.lineTo(320 + value, 260 + positionY);
+		context.lineTo(320 + value, 275 + positionY);
+		context.lineTo(-600 + value, 275 + positionY);
+		context.closePath();
+		context.fill();
+		context.stroke();
 	}
 
 	sky(context);
@@ -1115,10 +1192,10 @@ const bus_properties = {
 		{ x: -600, y: 400 }
 	],
 	windows: [
-		{ x: -590, y: 190 },
-		{ x: -510, y: 190 },
-		{ x: -510, y: 230 },
-		{ x: -590, y: 230 }
+		{ x: -590, y: 200 },
+		{ x: -510, y: 200 },
+		{ x: -510, y: 240 },
+		{ x: -590, y: 240 }
 	],
 	doors: [
 		{ x: 320, y: 190 },
@@ -1136,13 +1213,12 @@ const bus_properties = {
 		{ x: -610, y: 360 },
 		{ x: -610, y: 360 }
 	],
-	wheels: [
-		{ x: -400, y: 400, size: 60, innerSize: 35 },
-		{ x: 590, y: 400, size: 60, innerSize: 35 }
-	]
+	wheel: { x: -400, y: 400, size: 60, innerSize: 35 },
+	wheelDetail: { x: -42, y: 42 }
 };
 
 let value = -800;
+let angle = 0.5;
 
 const context = document.querySelector("#drawing").getContext("2d");
 const moveButton = document.querySelector("#move-button");
