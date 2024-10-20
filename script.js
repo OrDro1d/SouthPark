@@ -142,18 +142,6 @@ function drawBackground() {
 		context.stroke();
 	}
 
-	sky();
-	background();
-	hill();
-	sign();
-}
-
-function drawAction() {
-	drawBackground();
-
-	value += 10;
-	angle += 0.5;
-
 	function children() {
 		function Kyle(positionX, positionY) {
 			// Руки
@@ -1016,6 +1004,15 @@ function drawAction() {
 		Kenny(620, 380);
 	}
 
+	sky();
+	background();
+	hill();
+	sign();
+
+	if (areChildrenThere) children();
+}
+
+function drawAction() {
 	function bus(value, angle, positionY = 0) {
 		// Автобус (основа)
 		context.strokeStyle = "black";
@@ -1053,6 +1050,8 @@ function drawAction() {
 				bus_properties.wheelDetail.y * Math.cos(angle);
 			bus_properties.wheelDetail.x = temp;
 
+			context.lineWidth = 5;
+
 			context.beginPath();
 			context.strokeStyle = "gray";
 			context.moveTo(
@@ -1071,6 +1070,8 @@ function drawAction() {
 			);
 			context.closePath();
 			context.stroke();
+
+			context.lineWidth = 0.5;
 
 			context.beginPath();
 			context.fillStyle = "gray";
@@ -1224,10 +1225,21 @@ function drawAction() {
 		context.stroke();
 	}
 
-	if (value < 300) children();
+	drawBackground();
+
+	value += 10;
+
+	if (value == 400) areChildrenThere = !areChildrenThere;
+
+	if (value >= 4000) value = -1000;
+
 	bus(value, angle, 40);
 
-	requestId = requestAnimationFrame(drawAction);
+	if (isAnimationOn) {
+		requestId = requestAnimationFrame(drawAction);
+	} else {
+		cancelAnimationFrame(requestId);
+	}
 }
 
 const bus_properties = {
@@ -1265,21 +1277,29 @@ const bus_properties = {
 	wheelDetail: { x: -42, y: 42 }
 };
 
-let value = -800;
-let angle = 0.5;
+let value = -1000;
+let angle = 0.05;
 
 let requestId;
 let isAnimationOn = false;
+let areChildrenThere = true;
 
 const context = document.querySelector("#drawing").getContext("2d");
 const moveButton = document.querySelector("#move-button");
 const animationButton = document.querySelector("#animation-button");
+const resetButton = document.querySelector("#reset-button");
+
+context.lineWidth = 0.5;
 
 drawBackground();
 
 moveButton.addEventListener("input", event => {
+	cancelAnimationFrame(requestId);
+	isAnimationOn = false;
+
 	value = Number(moveButton.value);
-	draw();
+	drawBackground();
+	drawAction();
 });
 
 animationButton.addEventListener("click", () => {
@@ -1289,4 +1309,15 @@ animationButton.addEventListener("click", () => {
 		cancelAnimationFrame(requestId);
 	}
 	isAnimationOn = !isAnimationOn;
+});
+
+resetButton.addEventListener("click", () => {
+	value = -1000;
+	isAnimationOn = false;
+	areChildrenThere = true;
+
+	cancelAnimationFrame(requestId);
+
+	drawBackground();
+	drawAction();
 });
