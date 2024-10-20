@@ -105,6 +105,43 @@ function draw(context) {
 		context.fill();
 	}
 
+	function sign(context) {
+		context.beginPath();
+		context.fillStyle = "brown";
+		context.moveTo(250, 420);
+		context.lineTo(257, 420);
+		context.lineTo(257, 220);
+		context.lineTo(250, 220);
+		context.closePath();
+		context.fill();
+
+		context.beginPath();
+		context.fillStyle = "yellow";
+		context.moveTo(254, 280);
+		context.lineTo(314, 220);
+		context.lineTo(254, 160);
+		context.lineTo(194, 220);
+		context.closePath();
+		context.fill();
+		context.stroke();
+
+		context.beginPath();
+		context.moveTo(254, 275);
+		context.lineTo(309, 220);
+		context.lineTo(254, 165);
+		context.lineTo(199, 220);
+		context.closePath();
+		context.stroke();
+
+		context.beginPath();
+		context.fillStyle = "black";
+		context.rect(239, 200, 10, 40);
+		context.rect(259, 200, 8, 40);
+		context.closePath();
+		context.fill();
+		context.stroke();
+	}
+
 	function children(context) {
 		function Kyle(context, positionX, positionY) {
 			// Руки
@@ -1178,6 +1215,7 @@ function draw(context) {
 	sky(context);
 	background(context);
 	hill(context);
+	sign(context);
 	if (value < 300) children(context);
 	bus(context, 40);
 }
