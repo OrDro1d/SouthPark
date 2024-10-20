@@ -1293,8 +1293,9 @@ context.lineWidth = 0.5;
 
 drawBackground();
 
-moveButton.addEventListener("input", event => {
+moveButton.addEventListener("input", () => {
 	cancelAnimationFrame(requestId);
+	animationButton.textContent = "START!";
 	isAnimationOn = false;
 
 	value = Number(moveButton.value);
@@ -1303,10 +1304,12 @@ moveButton.addEventListener("input", event => {
 });
 
 animationButton.addEventListener("click", () => {
-	if (!isAnimationOn) {
-		requestId = requestAnimationFrame(drawAction);
-	} else {
+	if (isAnimationOn) {
 		cancelAnimationFrame(requestId);
+		animationButton.textContent = "START!";
+	} else {
+		requestId = requestAnimationFrame(drawAction);
+		animationButton.textContent = "STOP!";
 	}
 	isAnimationOn = !isAnimationOn;
 });
