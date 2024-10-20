@@ -1,5 +1,5 @@
-function draw(context) {
-	function sky(context) {
+function drawBackground() {
+	function sky() {
 		context.fillStyle = "rgb(175, 238, 238)";
 		context.beginPath();
 		context.moveTo(0, 0);
@@ -10,7 +10,7 @@ function draw(context) {
 		context.fill();
 	}
 
-	function background(context) {
+	function background() {
 		// Горы
 		context.fillStyle = "rgb(60, 179, 113)";
 		context.beginPath();
@@ -88,7 +88,7 @@ function draw(context) {
 		context.fill();
 	}
 
-	function hill(context) {
+	function hill() {
 		context.fillStyle = "rgb(255,255,255)";
 		context.strokeStyle = "rgb(0,0,0)";
 		context.beginPath();
@@ -105,7 +105,7 @@ function draw(context) {
 		context.fill();
 	}
 
-	function sign(context) {
+	function sign() {
 		context.beginPath();
 		context.fillStyle = "brown";
 		context.moveTo(250, 420);
@@ -142,8 +142,20 @@ function draw(context) {
 		context.stroke();
 	}
 
-	function children(context) {
-		function Kyle(context, positionX, positionY) {
+	sky();
+	background();
+	hill();
+	sign();
+}
+
+function drawAction() {
+	drawBackground();
+
+	value += 10;
+	angle += 0.5;
+
+	function children() {
+		function Kyle(positionX, positionY) {
 			// Руки
 			context.fillStyle = "rgb(255, 140, 0)";
 
@@ -375,7 +387,7 @@ function draw(context) {
 			context.fill();
 		}
 
-		function Stan(context, positionX, positionY) {
+		function Stan(positionX, positionY) {
 			// Руки
 			context.fillStyle = "rgb(160, 82, 45)";
 
@@ -582,7 +594,7 @@ function draw(context) {
 			context.fill();
 		}
 
-		function Cartman(context, positionX, positionY) {
+		function Cartman(positionX, positionY) {
 			// Штаны
 			context.fillStyle = "rgb(160, 82, 45)";
 			context.beginPath();
@@ -783,7 +795,7 @@ function draw(context) {
 			context.fill();
 		}
 
-		function Kenny(context, positionX, positionY) {
+		function Kenny(positionX, positionY) {
 			// Руки
 			context.fillStyle = "rgb(255, 140, 0)";
 
@@ -998,13 +1010,13 @@ function draw(context) {
 			context.fill();
 		}
 
-		Kyle(context, 300, 380);
-		Stan(context, 400, 380);
-		Cartman(context, 510, 380);
-		Kenny(context, 620, 380);
+		Kyle(300, 380);
+		Stan(400, 380);
+		Cartman(510, 380);
+		Kenny(620, 380);
 	}
 
-	function bus(context, positionY = 0) {
+	function bus(value, angle, positionY = 0) {
 		// Автобус (основа)
 		context.strokeStyle = "black";
 
@@ -1212,12 +1224,10 @@ function draw(context) {
 		context.stroke();
 	}
 
-	sky(context);
-	background(context);
-	hill(context);
-	sign(context);
-	if (value < 300) children(context);
-	bus(context, 40);
+	if (value < 300) children();
+	bus(value, angle, 40);
+
+	requestId = requestAnimationFrame(drawAction);
 }
 
 const bus_properties = {
@@ -1258,13 +1268,25 @@ const bus_properties = {
 let value = -800;
 let angle = 0.5;
 
+let requestId;
+let isAnimationOn = false;
+
 const context = document.querySelector("#drawing").getContext("2d");
 const moveButton = document.querySelector("#move-button");
+const animationButton = document.querySelector("#animation-button");
 
-draw(context);
+drawBackground();
 
 moveButton.addEventListener("input", event => {
 	value = Number(moveButton.value);
-	console.log(value);
-	draw(context);
+	draw();
+});
+
+animationButton.addEventListener("click", () => {
+	if (!isAnimationOn) {
+		requestId = requestAnimationFrame(drawAction);
+	} else {
+		cancelAnimationFrame(requestId);
+	}
+	isAnimationOn = !isAnimationOn;
 });

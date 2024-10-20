@@ -10,6 +10,8 @@ html {
 }
 
 .control-panel {
+	display: flex;
+	justify-content: space-evenly;
 	align-items: center;
 	border: 1px solid black;
 	width: 950px;
@@ -18,12 +20,22 @@ html {
 }
 
 .control-panel div {
-	width: 400px;
-	padding: 20px;
-	height: 60px;
+	padding: 20px 20px;
 	border: 1px solid black;
 	font-size: 3em;
 	text-align: center;
 	color: black;
-	margin: 45px auto;
+}
+
+.control-panel div:hover {
+	background-color: ghostwhite;
+}
+
+.control-panel div a {
+	color: black;
+	text-decoration: none;
+}
+
+.control-panel div a:hover {
+	cursor: pointer;
 }
